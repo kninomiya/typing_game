@@ -13,7 +13,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
+  username: ninomiyakouichiroumy
   password: test
   host: localhost
 
@@ -26,7 +26,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: typing_game_test
+  database: test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -51,4 +51,4 @@ production:
   <<: *default
   database: typing_game_production
   username: typing_game
-  password: <%= ENV['TYPING_GAME_DATABASE_PASSWORD'] %>
+  password: test
