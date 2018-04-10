@@ -7,4 +7,4 @@ test:
 production:
   adapter: redis
   url: redis://localhost:6379/1
-  channel_prefix: typing_typing_game_production
+  channel_prefix: typing_game_production

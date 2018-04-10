@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  image: 
+  gerne: 1
+  image_path: 
+
+two:
+  image: 
+  gerne: 1
+  image_path: 
