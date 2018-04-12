@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TypingGame</title>
+    <title>TypingGame | <%= yield(:title) %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+    <<script src="http://html5siv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    </script>
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+           <a class="navbar-brand" href="#">
+                  typing game
+           </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarExample8">
+
+                <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
+          <div class="input-group">
+                 <span class="input-group-addon">user</span>
+                 <input type="text" class="form-control" placeholder="user_id">
+                 <span class="input-group-addon">password</span>
+                 <input type="text" class="form-control" placeholder="password">
+          </div>
+
+        </div>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
