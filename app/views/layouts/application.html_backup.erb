@@ -17,24 +17,29 @@
     <header class="navbar navbar-fixed-top navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">typing game</a>
+
+           <a class="navbar-brand" href="#">
+                  typing game
+           </a>
         </div>
+
         <div class="collapse navbar-collapse" id="navbarExample8">
-          <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
-            <form class="form-inline pull-right">
-          	  <div class="form-group">
-                <label for="email">ID</label>
-                <input type="email" class="form-control" id="email" placeholder="ID">
-              </div>
-              <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" class="form-control" id="pass" placeholder="Password">
-              </div>
-              <button type="submit" class="btn btn-default">Sign up</button>
-            </form>
-         </div>
+                <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
+          <div class="input-group">
+
+                 <span class="input-group-addon">user_id</span>
+
+                 <input type="text" style="width:150px;" class="form-control input" placeholder="user_id">
+
+
+                 <span class="input-group-addon">password</span>
+                 <input type="text" style="width:150px;" class="form-control input" placeholder="password">
+
+             </div>
+          </div>
+        </div>
       </div>
-   </header>
+    </header>
     <%= yield %>
   </body>
 </html>
