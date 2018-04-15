@@ -3,15 +3,30 @@
   <h1>ようこそ！タイピングゲームのページへ！</h1>
 </div>
 
-　<h3>
-    このページでは昔のゲームのタイトルを使ってタイピングゲームをする事が出来ます。
-    ハイスコアネームを残したい方はアカウントを作成しログインしていれば、ゲーム終了後
-    高得点を取ることによりハイスコアネームを残せますので、宜しければアカウント作成の上
-    ゲームをプレイしてみてください！
-  　アカウント作成は<a herf="http://static_pages/authentication/">こちら</a>から
+<div class="comment">
+    このページでは昔のゲームのタイトルを使ってタイピングゲームをする事が出来ます。<br>
+    ハイスコアネームを残したい方はアカウントを作成しログインしていれば、ゲーム終了後<br>
+    高得点を取ることによりハイスコアネームを残せますので、宜しければアカウント作成の上<br>
+    ゲームをプレイしてみてください！<br>
+    アカウント作成は<a herf="http://static_pages/authentication/">こちら</a>から<br><br>
 
-    また、既にアカウントを作成されている方はヘッダーのテキストボックスからIDとPASSWORDを
-    入れていただくことでログインが可能です。
-  </h3>
+    また、既にアカウントを作成されている方はヘッダーのテキストボックスからIDとPASSWORDを<br>
+    入力してください。
+</div>
+
+<div class="pattern1">
+<%= javascript_tag do %>
+  window.questions = <%= raw @questions.to_json %>;
+  　console.log("test"+window.questions[0].image_path);
+
+  function test() {
+  $("#title_img").attr("src", window.questions[0].image_path);
+  }
+<% end %>
+
+<%= image_tag("001.jpg", :id => "title_img") %>
+
+<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
+</div>
 
 <p>Find me in app/views/static_pages/home.html.erb</p>

@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180411070004) do
+ActiveRecord::Schema.define(version: 20180414030141) do
 
   create_table "questions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.binary "image"
-    t.integer "gerne"
+    t.text "character_string"
+    t.integer "genre"
     t.text "image_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

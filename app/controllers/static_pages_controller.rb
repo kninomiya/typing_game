@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @questions = Question.all
   end
 
   def score
@@ -7,4 +8,5 @@ class StaticPagesController < ApplicationController
 
   def authentication
   end
+
 end
