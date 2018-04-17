@@ -23,6 +23,7 @@
     var a = Math.random() * 3;
     var n = Math.floor( a ) + 1;
     $("#title_img").attr("src", window.questions[n].image_path);
+    $("#question_text").attr("id", windows.questions[n].character_string);
   }
 
 
@@ -35,6 +36,7 @@
 <%= image_tag("001.jpg", :id => "title_img") %>
 
 <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
+<script>document.write(window.questions[n].character_string :id => "question_text");</script>
 </div>
 
 <p>Find me in app/views/static_pages/home.html.erb</p>
