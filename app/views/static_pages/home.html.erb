@@ -17,12 +17,20 @@
 <div class="pattern1">
 <%= javascript_tag do %>
   window.questions = <%= raw @questions.to_json %>;
-  　console.log("test"+window.questions[0].image_path);
+  　console.log("test"+window.questions[2].image_path);
 
-  function test() {
-  $("#title_img").attr("src", window.questions[0].image_path);
+  function test(){
+    var a = Math.random() * 3;
+    var n = Math.floor( a ) + 1;
+    $("#title_img").attr("src", window.questions[n].image_path);
   }
+
+
+
+
 <% end %>
+
+<script type="text/javascript" src=""></script>
 
 <%= image_tag("001.jpg", :id => "title_img") %>
 
