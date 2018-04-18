@@ -17,26 +17,25 @@
 <div class="pattern1">
 <%= javascript_tag do %>
   window.questions = <%= raw @questions.to_json %>;
-  　console.log("test"+window.questions[2].image_path);
+    console.log("test"+window.questions[n].character_string);
 
   function test(){
     var a = Math.random() * 3;
     var n = Math.floor( a ) + 1;
     $("#title_img").attr("src", window.questions[n].image_path);
-    $("#question_text").attr("id", windows.questions[n].character_string);
-  }
-
-
-
+    var newText = $(window.questions[n].character_string);
+    $("#string").text(newText);
+    }
 
 <% end %>
 
 <script type="text/javascript" src=""></script>
 
 <%= image_tag("001.jpg", :id => "title_img") %>
+<p id="string">テスト文章</p>
+
 
 <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
-<script>document.write(window.questions[n].character_string :id => "question_text");</script>
 </div>
 
 <p>Find me in app/views/static_pages/home.html.erb</p>
