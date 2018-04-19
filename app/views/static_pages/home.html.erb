@@ -14,8 +14,79 @@
     入力してください。
 </div>
 
+<form name="timer">
+  <input type="text" value="60">秒<br>
+  <input type="button" value="start" onclick="cntStart()">
+  <input type="button" value="stop" onclick="cntStop()">
+</form>
+
+<script>
+
+  var timer1;//タイマーを格納する変数
+
+//カウントダウン関数を1000ミリ毎に呼び出す関数
+  function cntStart()
+  {
+      document.timer.elements[1].disabled=true;
+      timer1=setInterval("countDown()",1000);
+  }
+
+//タイマー停止関数
+  function cntStop()
+  {
+      document.timer.elements[1].disabled=false;
+      clearInterval(timer1);
+  }
+
+//カウントダウン関数
+  function countDown()
+  {
+      var sec=document.timer.elements[0].value;
+
+      if(sec=="")
+      {
+          alert("時刻を設定してください！");
+          reSet();
+      }
+      else
+      {
+
+          if (sec=="") sec=0;
+          sec=parseInt(sec);
+
+          tmWrite(sec-1);
+      }
+  }
+
+//残り時間を書き出す関数
+function tmWrite(int)
+{
+    int=parseInt(int);
+
+    if (int<=0)
+    {
+        reSet();
+        alert("時間です！");
+    }
+    else
+    {
+        //残り秒数はintを60で割った余り
+        document.timer.elements[0].value=int % 60;
+    }
+}
+
+//フォームを初期状態に戻す(リセット)関数
+    function reSet()
+    {
+        document.timer.elements[0].value="0";
+        document.timer.elements[1].disabled=false;
+        clearInterval(timer1);
+    }
+</script>
+
 <div class="pattern1">
 <%= javascript_tag do %>
+    var n;
   window.questions = <%= raw @questions.to_json %>;
     console.log("test"+window.questions[n].character_string);
 
@@ -23,7 +94,7 @@
     var a = Math.random() * 3;
     var n = Math.floor( a ) + 1;
     $("#title_img").attr("src", window.questions[n].image_path);
-    var newText = $(window.questions[n].character_string);
+    var newText = window.questions[n].character_string;
     $("#string").text(newText);
     }
 
@@ -33,7 +104,6 @@
 
 <%= image_tag("001.jpg", :id => "title_img") %>
 <p id="string">テスト文章</p>
-
 
 <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
 </div>
