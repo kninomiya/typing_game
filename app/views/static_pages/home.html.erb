@@ -86,7 +86,7 @@ function tmWrite(int)
 
 <div class="pattern1">
 <%= javascript_tag do %>
-    var n;
+    var n=0;
   window.questions = <%= raw @questions.to_json %>;
     console.log("test"+window.questions[n].character_string);
 
@@ -96,16 +96,103 @@ function tmWrite(int)
     $("#title_img").attr("src", window.questions[n].image_path);
     var newText = window.questions[n].character_string;
     $("#string").text(newText);
+    $('#destination').empty();
+    $('#destination').append(
+
+      $("<div></div>", {
+        width: 100,
+        height: 100,
+        css: {border: "5px solid gray"},
+        addClass: "ranking-2nd",
+        on: {
+            click: function(event) {
+               // イベント設定
+            }
+        }
+      })
+    );
+    ;
+
     }
+
+    var imagePath = "https://s3-ap-northeast-1.amazonaws.com/process-investigate-tool/test.jpg";
+    console.log(imagePath);
+
+    var score = 100;
+    console.log(score);
+
+    var users = [ 1, 5, 100, 20, 5 ];
+    console.log(users);
+    users.sort(
+    function(a,b) {
+    return parseInt(a) > parseInt(b);
+    }
+    );
+    console.log(users);
+
+    // ハイスコアレコードを持つオブジェクトのサンプル
+    var highscoreRecord = {
+    score: 95,
+    precision: 0.8
+    };
+    console.log(highscoreRecord);
+    // オブジェクトに属性を後から設定することもできる
+    highscoreRecord.comment = "Great!";
+    console.log(highscoreRecord);
+    // オブジェクトの書き方はいくつかあるため以下のように書くことも可能
+    var anonymousRecord = new Object();
+    anonymousRecord.score = 50;
+    anonymousRecord.precision = 0.5;
+    anonymousRecord.comment = "Oh..";
+    console.log(anonymousRecord);
+
+    // 1.配列の要素数を確認する
+    var questionCount = questions.length;
+    console.log(questionCount);
+    // 2.配列の先頭の要素を取得する
+    var firstQuestion = questions[0];
+    console.log(firstQuestion);
+    // 3.配列の先頭の要素の画像パスを取得する
+    var firstQuestionImagePath = questions[0]["image_path"];
+    console.log(firstQuestionImagePath);
+    // 4.配列の先頭の要素の画像パスを取得する(他の書き方)
+    var firstQuestionImagePath = questions[0].image_path;
+    console.log(firstQuestionImagePath);
+
+    function onClickTestButton(event) {
+
+    console.log("onClick");
+    }
+
+    function ScorePage() {
+    this.result = 90;
+    }
+    ScorePage.prototype.show = function() {
+    $("#destination").append(
+    $("<div>SCORE " + this.result + " point</div>")
+    );
+
+    };
+    var score = new ScorePage();
+    console.log(score.titleText);
+
 
 <% end %>
 
-<script type="text/javascript" src=""></script>
 
-<%= image_tag("001.jpg", :id => "title_img") %>
-<p id="string">テスト文章</p>
-
-<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
+<div class="moji">
+  <%= image_tag("001.jpg", :id => "title_img") %>
+  <p id="string">テスト文章</p>
 </div>
 
+
+<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
+
+<button type="submit" class="btn btn-default" button id="button1" onclick="score.show();">Push</button>
+
+
 <p>Find me in app/views/static_pages/home.html.erb</p>
+
+<div id="destination">
+<!--SCORE 100 -->
+</div>

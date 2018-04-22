@@ -10,8 +10,26 @@
   }
 <% end %>
 
+<script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $("p").css("color", "yellow");
+        });
+    });
+</script>
+
 <%= image_tag("title.jpeg", :id => "title_img") %>
 
 <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>;
+
+<h2>This is a heading</h2>
+
+<p style="background-color:#ff0000">This is a paragraph.</p>
+<p style="background-color:#00ff00">This is a paragraph.</p>
+<p style="background-color:#0000ff">This is a paragraph.</p>
+
+<p>This is a paragraph.</p>
+
+<button>Set background-color of p</button>
 
 <p>Find me in app/views/game/index.html.erb</p>

@@ -112,3 +112,17 @@ footer {
   text-align: center;
   zoom: 3;
 }
+
+.moji {
+  position: relative;
+  background:rgba(0,0,0,0.3);
+
+  p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transfotm: translate(-50%, -50%);
+    margin: 0;
+    padding: 0;
+  }
+}
