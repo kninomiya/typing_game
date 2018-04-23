@@ -1,0 +1,196 @@
+<% provide(:title, 'Home') %>
+<div class="center jumbotron">
+  <h1>ようこそ！タイピングゲームのページへ！</h1>
+</div>
+
+<div class="comment">
+    このページでは昔のゲームのタイトルを使ってタイピングゲームをする事が出来ます。<br>
+    ハイスコアネームを残したい方はアカウントを作成しログインしていれば、ゲーム終了後<br>
+    高得点を取ることによりハイスコアネームを残せますので、宜しければアカウント作成の上<br>
+    ゲームをプレイしてみてください！<br>
+    アカウント作成は<a herf="http://static_pages/authentication/">こちら</a>から<br><br>
+
+    また、既にアカウントを作成されている方はヘッダーのテキストボックスからIDとPASSWORDを<br>
+    入力してください。
+</div>
+
+<form name="timer">
+  <input type="text" value="60">秒<br>
+  <input type="button" value="start" onclick="cntStart()">
+  <input type="button" value="stop" onclick="cntStop()">
+</form>
+
+<script>
+
+  var timer1;//タイマーを格納する変数
+
+//カウントダウン関数を1000ミリ毎に呼び出す関数
+  function cntStart()
+  {
+      document.timer.elements[1].disabled=true;
+      timer1=setInterval("countDown()",1000);
+  }
+
+//タイマー停止関数
+  function cntStop()
+  {
+      document.timer.elements[1].disabled=false;
+      clearInterval(timer1);
+  }
+
+//カウントダウン関数
+  function countDown()
+  {
+      var sec=document.timer.elements[0].value;
+
+      if(sec=="")
+      {
+          alert("時刻を設定してください！");
+          reSet();
+      }
+      else
+      {
+
+          if (sec=="") sec=0;
+          sec=parseInt(sec);
+
+          tmWrite(sec-1);
+      }
+  }
+
+//残り時間を書き出す関数
+function tmWrite(int)
+{
+    int=parseInt(int);
+
+    if (int<=0)
+    {
+        reSet();
+        alert("時間です！");
+    }
+    else
+    {
+        //残り秒数はintを60で割った余り
+        document.timer.elements[0].value=int % 60;
+    }
+}
+
+//フォームを初期状態に戻す(リセット)関数
+    function reSet()
+    {
+        document.timer.elements[0].value="0";
+        document.timer.elements[1].disabled=false;
+        clearInterval(timer1);
+    }
+</script>
+
+<div class="pattern1">
+<%= javascript_tag do %>
+    var n=0;
+  window.questions = <%= raw @questions.to_json %>;
+    console.log("test"+window.questions[n].character_string);
+
+  function test(){
+    var a = Math.random() * 3;
+    var n = Math.floor( a ) + 1;
+    $("#title_img").attr("src", window.questions[n].image_path);
+    var newText = window.questions[n].character_string;
+    $("#string").text(newText);
+    $('#destination').empty();
+    $('#destination').append(
+
+      $("<div></div>", {
+        width: 100,
+        height: 100,
+        css: {border: "5px solid gray"},
+        addClass: "ranking-2nd",
+        on: {
+            click: function(event) {
+               // イベント設定
+            }
+        }
+      })
+    );
+    ;
+
+    }
+
+    var imagePath = "https://s3-ap-northeast-1.amazonaws.com/process-investigate-tool/test.jpg";
+    console.log(imagePath);
+
+    var score = 100;
+    console.log(score);
+
+    var users = [ 1, 5, 100, 20, 5 ];
+    console.log(users);
+    users.sort(
+    function(a,b) {
+    return parseInt(a) > parseInt(b);
+    }
+    );
+    console.log(users);
+
+    // ハイスコアレコードを持つオブジェクトのサンプル
+    var highscoreRecord = {
+    score: 95,
+    precision: 0.8
+    };
+    console.log(highscoreRecord);
+    // オブジェクトに属性を後から設定することもできる
+    highscoreRecord.comment = "Great!";
+    console.log(highscoreRecord);
+    // オブジェクトの書き方はいくつかあるため以下のように書くことも可能
+    var anonymousRecord = new Object();
+    anonymousRecord.score = 50;
+    anonymousRecord.precision = 0.5;
+    anonymousRecord.comment = "Oh..";
+    console.log(anonymousRecord);
+
+    // 1.配列の要素数を確認する
+    var questionCount = questions.length;
+    console.log(questionCount);
+    // 2.配列の先頭の要素を取得する
+    var firstQuestion = questions[0];
+    console.log(firstQuestion);
+    // 3.配列の先頭の要素の画像パスを取得する
+    var firstQuestionImagePath = questions[0]["image_path"];
+    console.log(firstQuestionImagePath);
+    // 4.配列の先頭の要素の画像パスを取得する(他の書き方)
+    var firstQuestionImagePath = questions[0].image_path;
+    console.log(firstQuestionImagePath);
+
+    function onClickTestButton(event) {
+
+    console.log("onClick");
+    }
+
+    function ScorePage() {
+    this.result = 90;
+    }
+    ScorePage.prototype.show = function() {
+    $("#destination").append(
+    $("<div>SCORE " + this.result + " point</div>")
+    );
+
+    };
+    var score = new ScorePage();
+    console.log(score.titleText);
+
+
+<% end %>
+
+
+<div class="moji">
+  <%= image_tag("001.jpg", :id => "title_img") %>
+  <p id="string">テスト文章</p>
+</div>
+
+
+<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
+
+
+<p>Find me in app/views/static_pages/home.html.erb</p>
+
+<div id="destination">
+<!--SCORE 100 -->
+</div>
