@@ -87,6 +87,7 @@ document.onkeydown = function (e){
         {
             //残り秒数はintを60で割った余り
             document.timer.elements[0].value=int % 60;
+            document.getElementById("timercount").innerHTML = document.timer.elements[0].value;
         }
     }
 
@@ -113,17 +114,9 @@ document.onkeydown = function (e){
     $("#title_img").attr("src", window.questions[n].image_path);
     var newText = window.questions[n].character_string;
     $("#string").text(newText);
+      }
     }
-    }
-
-    // function test(){
-    // var a = Math.random() * 3;
-    // var n = Math.floor( a ) + 1;
-    // $("#title_img").attr("src", window.questions[n].image_path);
-    // var newText = window.questions[n].character_string;
-    // $("#string").text(newText);
-    // }
-<% end %>
+  <% end %>
 
   <form name="timer">
     <input type="text" value="60">秒<br>
@@ -133,9 +126,7 @@ document.onkeydown = function (e){
 
   <div class="moji">
     <%= image_tag("title.jpeg", :id => "title_img") %>
-  <script>
-    document.write(timer1);
-  </script>
+    <div class="timer" id="timercount"></div>
     <p id="string">PUSH ENTER KEY</p>
   </div>
   <!--<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>-->
