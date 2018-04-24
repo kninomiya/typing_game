@@ -19,7 +19,7 @@
 
     var timer1;//タイマーを格納する変数
 
-    document.onkeydown = typeGame;　//キーを押したら関数typeGame()を呼び出す
+    window.document.onkeydown = typeGame;//キーを押したら関数typeGame()を呼び出す
 
     //キーコードを格納する配列
     var keycode = new Array(13, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
@@ -28,9 +28,8 @@
     //グローバル変数
     var correct_count = 0;    //正しく打てた文字数
     var mistake_count = 0;    //間違えた文字数
-    var combo_count = 0;      //コンボ数(文字列を間違えず打ち切ると1、2と増加、間違えたら0に戻る)
-    var maxcombo_count = 0;   //最大コンボ数
-    var cntmax = string.length;  //文字列の文字数をカウントする
+    var combo_count = 0;    //コンボ数(文字列を間違えず打ち切ると1、2と増加、間違えたら0に戻る)
+    var maxcombo_count = 0;    //最大コンボ数
 
     //カウントダウン関数を1000ミリ毎に呼び出す関数
     function cntStart() {
@@ -83,63 +82,46 @@
         clearInterval(timer1);
     }
 
-    //タイピングゲームの問題をセットする関数
-    function gameSet() {
-        //問題文とカウントをクリアする
-        mondai = "";
-
-        //問題文を呼出す
-        var str = window.questions[n].character_string,
-            cntmax = str.length;
-            console.log(cntmax);
-
-        //問題文を枠の中に入れる
-        document.getElementById("waku").innerHTML = mondai;
-    }
-    //キー入力を受け取る関数
-    function typeGame(evt)
-    {
-        var kc; //入力されたキーコードを格納する変数
-
-        //入力されたキーのキーコードを取得
-        if(document.all)
-        {
-            kc = event.keyCode;
-        }
-        else
-        {
-            kc = evt.which;
-        }
-        //入力されたキーコードと問題文のキーコードを比較 ※問題の文字列と比較する予定keycode[[]]、一旦[a]=65でテスト
-        if (kc == 65) {
-            //入力されたセルの文字色を灰色にする
-            var idName = "word" + cnt;
-            document.getElementById(idName).style.color = "#808080";
-            cnt++; //文字列を1つ進める
-        }
-        else {
-            //入力されたセルの文字色を赤にしてやり直し
-            var idName = "word" + cnt;
-            document.getElementById(idName).style.color = "#FF0000";
-        }
-
-        //全文字入力したか確認、入力していたら次の写真と文字列を呼び出す
-        if (cnt == cntmax)
-        {
-            var a = Math.random() * 3;
-            var n = Math.floor( a ) + 1;
-            $("#title_img").attr("src", window.questions[n].image_path);
-            var newText = window.questions[n].character_string;
-            $("#string").text(newText);
-        }
-
-        //残り時間が0になったらゲーム画面にGAME OVERの文字を出力する
-        if (document.timer.elements[0].value == 0)
-        {
-            var fin="TIME OVER";
-            document.getElementById("waku").innerHTML = fin;
-        }
-    }
+    // //キー入力を受け取る関数
+    // function typeGame(evt)
+    // {
+    //     var kc; //入力されたキーコードを格納する変数
+    //
+    //     //入力されたキーのキーコードを取得
+    //     if(document.all)
+    //     {
+    //         kc = event.keyCode;
+    //     }
+    //     else
+    //     {
+    //         kc = evt.which;
+    //     }
+    //     //入力されたキーコードと問題文のキーコードを比較 ※問題の文字列と比較する予定keycode[[]]、一旦[a]=65でテスト
+    //     if (kc == 65) {
+    //         //入力されたセルの文字色を灰色にする
+    //         var idName = "word" + cnt;
+    //         document.getElementById(idName).style.color = "#808080";
+    //         cnt++; //文字列を1つ進める
+    //     }
+    //     else {
+    //         //入力されたセルの文字色を赤にしてやり直し
+    //         var idName = "word" + cnt;
+    //         document.getElementById(idName).style.color = "#FF0000";
+    //     }
+    //
+    //     //全文字入力したか確認
+    //     if (cnt == )
+    //     {
+    //
+    //     }
+    //
+    //     //残り時間が0になったらゲーム画面にGAME OVERの文字を出力する
+    //     if (document.timer.elements[0].value == 0)
+    //     {
+    //         var fin="TIME OVER";
+    //         document.getElementById("waku").innerHTML = fin;
+    //     }
+    // }
 </script>
 
 
@@ -147,8 +129,6 @@
     var n=0;
     window.questions = <%= raw @questions.to_json %>;
     console.log("test"+window.questions[n].character_string);
-
-
 
     window.document.onkeydown = function(event){
     if (event.key === 'Enter')
@@ -158,21 +138,18 @@
     $("#title_img").attr("src", window.questions[n].image_path);
     var newText = window.questions[n].character_string;
     $("#string").text(newText);
-
       }
     }
   <% end %>
 
 
-
-
+<div class="pattern1">
   <form name="timer">
     <input type="text" value="30">秒<br>
     <input type="button" value="start" onclick="cntStart()">
     <input type="button" value="stop" onclick="cntStop()">
   </form>
 
-<div class="pattern1">
   <div class="moji">
     <%= image_tag("title.jpeg", :id => "title_img") %>
     <div class="timer" id="timercount"></div>
