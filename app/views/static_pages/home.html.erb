@@ -30,7 +30,7 @@
     var mistake_count = 0;    //間違えた文字数
     var combo_count = 0;      //コンボ数(文字列を間違えず打ち切ると1、2と増加、間違えたら0に戻る)
     var maxcombo_count = 0;   //最大コンボ数
-    var cntmax = string.length;  //文字列の文字数をカウントする
+    var cntmax = 0;           //文字列の文字数をカウントする
 
     //カウントダウン関数を1000ミリ毎に呼び出す関数
     function cntStart() {
@@ -84,47 +84,59 @@
     }
 
     //タイピングゲームの問題をセットする関数
-    function gameSet() {
-        //問題文とカウントをクリアする
+    function gameSet()
+    {
+        //文字列と文字数のカウントをクリアする
         mondai = "";
+        cnt = 0;
 
-        //問題文を呼出す
-        var str = window.questions[n].character_string,
-            cntmax = str.length;
+        //問題文を呼び出す
+        var a = Math.random() * 3;
+        var n = Math.floor( a ) + 1;
+        var mondai = window.questions[n].character_string,
+            cntmax = mondai.length;
             console.log(cntmax);
+            console.log(mondai);
 
         //問題文を枠の中に入れる
         document.getElementById("waku").innerHTML = mondai;
     }
     //キー入力を受け取る関数
+    console.log(18);
     function typeGame(evt)
     {
         var kc; //入力されたキーコードを格納する変数
-
+        console.log(kc);
         //入力されたキーのキーコードを取得
         if(document.all)
         {
             kc = event.keyCode;
+            console.log(20);
         }
         else
         {
             kc = evt.which;
+            console.log(21);
         }
-        //入力されたキーコードと問題文のキーコードを比較 ※問題の文字列と比較する予定keycode[[]]、一旦[a]=65でテスト
-        if (kc == 65) {
+        //入力されたキーコードと問題文のキーコードを比較
+        if (kc == mondai.charCodeAt(cnt)) {
             //入力されたセルの文字色を灰色にする
-            var idName = "word" + cnt;
+            idName = mondai.substr(cnt,cnt+1);
             document.getElementById(idName).style.color = "#808080";
             cnt++; //文字列を1つ進める
         }
         else {
-            //入力されたセルの文字色を赤にしてやり直し
-            var idName = "word" + cnt;
+            //入力されたセルの文字色を赤にしdName = mondai.substr(cnt,cnt+1);var idName = mondai[cnt];
+            idName = mondai.substr(cnt,cnt+1);
             document.getElementById(idName).style.color = "#FF0000";
         }
 
         //全文字入力したか確認、入力していたら次の写真と文字列を呼び出す
-        if (cnt == cntmax)
+        if (cnt < cntmax)
+        {
+            mondai = mondai.substring(1,mondai.Length);
+        }
+        else
         {
             var a = Math.random() * 3;
             var n = Math.floor( a ) + 1;
@@ -164,8 +176,6 @@
   <% end %>
 
 
-
-
   <form name="timer">
     <input type="text" value="30">秒<br>
     <input type="button" value="start" onclick="cntStart()">
@@ -178,8 +188,11 @@
     <div class="timer" id="timercount"></div>
     <p id="string">PUSH ENTER KEY</p>
   </div>
-
-<div id="waku"></div>
-  <!--<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>-->
 </div>
+
+<body onload="gameSet()">
+  <div id="waku"></div>
+</body>
+
+<!--<button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>-->
 <p>Find me in app/views/static_pages/home.html.erb</p>
