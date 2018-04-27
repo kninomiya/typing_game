@@ -96,62 +96,69 @@
         //問題文を呼び出す
         var a = Math.random() * 3;
         var n = Math.floor( a ) + 1;
-        var mondai = window.questions[n].character_string,
+            mondai = window.questions[n].character_string,
             cntmax = mondai.length;
-            console.log(17);
+            console.log(100);
             console.log(cntmax);
             console.log(mondai);
 
         //問題文を枠の中に入れる
         document.getElementById("waku").innerHTML = mondai;
+        console.log(mondai);
     }
     //キー入力を受け取る関数
-    console.log(18);
+    console.log(101);
     console.log(mondai);
     function typeGame(evt)
     {
         var kc; //入力されたキーコードを格納する変数
-        console.log(19);
+        console.log(102);
+        console.log(mondai);
         var elements = document.getElementsByTagName('*');
         console.log(elements);
+        console.log(mondai);
         //入力されたキーのキーコードを取得
         if(elements)
         {
             kc = evt.keyCode;
-            console.log(20);
+            console.log(103);
+            console.log(mondai);
         }
         else
         {
             kc = evt.which;
-            console.log(21);
+            console.log(104);
         }
         //入力されたキーコードと問題文のキーコードを比較
         console.log(kc);
+        console.log(mondai.charCodeAt(cnt))
         if (kc == mondai.charCodeAt(cnt)) {
+            console.log(105);
             //入力されたセルの文字色を灰色にする
             idName = mondai.substr(cnt,cnt+1);
             document.getElementById(idName).style.color = "#808080";
             cnt++; //文字列を1つ進める
-            console.log(22);
         }
         else {
             //入力されたセルの文字色を赤にしdName = mondai.substr(cnt,cnt+1);var idName = mondai[cnt];
+            console.log(106);
             console.log(mondai);
             idName = mondai.substr(cnt,cnt+1);
             console.log(mondai.substr(cnt,cnt+1))
             console.log(idName);
             console.log(cnt);
             document.getElementById(idName).style.color = "#FF0000";
-            console.log(23);
         }
 
         //全文字入力したか確認、入力していたら次の写真と文字列を呼び出す
         if (cnt < cntmax)
         {
+            console.log(107);
             mondai = mondai.substring(1,mondai.Length);
         }
         else
         {
+            console.log(108);
             var a = Math.random() * 3;
             var n = Math.floor( a ) + 1;
             $("#title_img").attr("src", window.questions[n].image_path);
@@ -162,6 +169,7 @@
         //残り時間が0になったらゲーム画面にGAME OVERの文字を出力する
         if (document.timer.elements[0].value == 0)
         {
+            console.log(109);
             var fin="TIME OVER";
             document.getElementById("waku").innerHTML = fin;
         }
@@ -173,6 +181,7 @@
     var n=0;
     window.questions = <%= raw @questions.to_json %>;
     console.log("test"+window.questions[n].character_string);
+    console.log(110);
 
 
     function test(){
@@ -198,6 +207,7 @@
     <p id="string">PUSH ENTER KEY</p>
   </div>
 </div>
+
 
 <body onload="gameSet()">
   <div id="waku"></div>
