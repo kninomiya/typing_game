@@ -33,7 +33,7 @@
     var cnt = 0;              //文字のカウント
     var cntmax = 0;           //文字列の文字数をカウントする
     var mondai = '';
-    var idName = '';
+
 
     //カウントダウン関数を1000ミリ毎に呼び出す関数
     function cntStart() {
@@ -143,10 +143,11 @@
             //入力されたセルの文字色を赤にしdName = mondai.substr(cnt,cnt+1);var idName = mondai[cnt];
             console.log(106);
             console.log(mondai);
-            idName = mondai.substr(cnt,cnt+1);
-            console.log(mondai.substr(cnt,cnt+1))
+            var idName = "waku";
+            console.log(mondai.substr(cnt,cnt+1));
             console.log(idName);
             console.log(cnt);
+            console.log(document.getElementById(idName));
             document.getElementById(idName).style.color = "#FF0000";
         }
 
