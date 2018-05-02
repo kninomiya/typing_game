@@ -10,38 +10,7 @@
 
     }
   <% end %>
-
-  <script>
-      $(document).ready(function(){
-          $("button").click(function(){
-              $("p").css("color", "yellow");
-          });
-      });
-  </script>
-
-
-<script>
-
-    var character_strings = "スーパーファミコン";
-    var input_strings = "スーパー";
-    var not_inputed_strings = character_strings.substring(input_strings.length);
-var idName = "target";
-document.getElementById(idName).style.color = "#FF0000";
-
-function testColor(){
-
-
-
-    $("#waku").append("<span style='color: #0000FF'>" + input_strings + "</span>");
-    $("#waku").append("<span id='change1' style='color: #000000'>" + not_inputed_strings + "</span>");
-}
-
-function changeColor() {
-    var idName = "change1";
-    document.getElementById(idName).style.color = "#FF0000";
-}
-
-</script>
+  <%= javascript_include_tag "game" %>
 
 </head>
 <body>
