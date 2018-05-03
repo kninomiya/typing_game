@@ -4,7 +4,6 @@
     <div class="center jumbotron">
       <h1>ようこそ！タイピングゲームのページへ！</h1>
     </div>
-  </head>
   <body onload="gameSet()">
   <%= javascript_tag do %>
     var n=0;
@@ -33,7 +32,20 @@
       また、既にアカウントを作成されている方はヘッダーのテキストボックスからIDとPASSWORDを<br>
       入力してください。
     </div>
-    <%= javascript_include_tag "typing" %>
+
+  <%= javascript_include_tag "typing" %>
+
+  <div class="pattern1">
+    <div class="moji">
+      <%= image_tag("title.jpg", :id => "title_img", :class => "img-thumbnail") %>
+      <div class="timer" id="timercount"></div>
+      <p id="string">PUSH ENTER KEY</p>
+    </div>
+    <div id="waku"></div>
+
+  </div>
+
+
 
   <form name="timer">
     <input type="text" value="30">秒<br>
@@ -41,19 +53,9 @@
     <input type="button" value="stop" onclick="cntStop()">
   </form>
 
-  <div class="pattern1">
-    <div class="moji">
-      <p class="img-thumbnail"><%= image_tag("title.jpg", :id => "title_img") %></p>
-      <div class="timer" id="timercount"></div>
-      <p id="string">PUSH ENTER KEY</p>
-    </div>
-  </div>
-
-  <div id="waku"></div>
-
   </head>
 </body>
-
+  <p>Find me in app/views/static_pages/home.html.erb</p>
 <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+
 </html>
