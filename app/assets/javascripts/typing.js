@@ -1,22 +1,19 @@
-let timer1;// タイマーを格納する変数
-
-document.onkeydown = typeGame; // キーを押したら関数typeGame()を呼び出す
-
 // キーコードを格納する配列
 const keycode = [
   13, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
-  78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
+  78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90
 ];
 
 // グローバル変数
-const correctCount = 0; // 正しく打てた文字数
-const mistakeCount = 0; // 間違えた文字数
-const comboCount = 0; // コンボ数(文字列を間違えず打ち切ると1、2と増加、間違えたら0に戻る)
-const maxcomboCount = 0; // 最大コンボ数
-let cnt = 0; // 文字のカウント
-let cntmax = 0; // 文字列の文字数をカウントする
-let mondai = '';
-
+var correctCount = 0; // 正しく打てた文字数
+var mistakeCount = 0; // 間違えた文字数
+var comboCount = 0; // コンボ数(文字列を間違えず打ち切ると1、2と増加、間違えたら0に戻る)
+var maxcomboCount = 0; // 最大コンボ数
+var cnt = 0; // 文字のカウント
+var cntmax = 0; // 文字列の文字数をカウントする
+var mondai = '';
+var timer1;// タイマーを格納する変数
+document.onkeydown = typeGame; // キーを押したら関数typeGame()を呼び出す
 
 // カウントダウン関数を1000ミリ毎に呼び出す関数
 /* eslint no-unused-vars: "off" */
@@ -38,7 +35,7 @@ function cntStop() {
 // カウントダウン関数
 /* eslint no-unused-vars: "off" */
 function countDown() {
-  let sec = document.timer.elements[0].value;
+  var sec = document.timer.elements[0].value;
 
   if (sec === '') {
     alert('時刻を設定してください！');
@@ -54,7 +51,7 @@ function countDown() {
 // 残り時間を書き出す関数
 /* eslint no-unused-vars: "off" */
 function tmWrite(int) {
-  let mini;
+  var mini;
   mini = parseInt(int, 10);
 
   if (int <= 0) {
@@ -83,8 +80,8 @@ function gameSet() {
   cnt = 0;
 
   // 問題文を呼び出す
-  const a = Math.random() * 3;
-  const n = Math.floor(a) + 1;
+  var a = Math.random() * 3;
+  var n = Math.floor(a) + 1;
   mondai = window.questions[n].character_string;
   cntmax = mondai.length;
   console.log(100);
@@ -99,17 +96,18 @@ function gameSet() {
 console.log(101);
 console.log(mondai);
 function typeGame(evt) {
-  let kc; // 入力されたキーコードを格納する変数
-  let idName = 'waku';
+  var kc; // 入力されたキーコードを格納する変数
+  var idName = 'waku';
   console.log(102);
   console.log(mondai);
-  const elements = document.getElementsByTagName('*');
+  var elements = document.getElementsByTagName('*');
   console.log(elements);
   console.log(mondai);
   // 入力されたキーのキーコードを取得
   if (elements) {
     kc = evt.keyCode;
     console.log(103);
+    console.log(kc);
     console.log(mondai);
   } else {
     kc = evt.which;

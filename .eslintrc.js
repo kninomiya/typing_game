@@ -3,8 +3,7 @@ module.exports = {
         browser: true
     },
     extends: [
-        'airbnb-base',
-        'plugin:node/recommended'
+        "eslint-config-airbnb-es5"
     ],
     plugins: [
         'node'
@@ -18,5 +17,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'no-alert': 0,
         'prefer-destructuring': 0,
+        'no-console': 0,
     }
+
 }
