@@ -13,18 +13,45 @@ var cnt = 0; // 文字のカウント
 var cntmax = 0; // 文字列の文字数をカウントする
 var mondai = '';
 var timer1;// タイマーを格納する変数
+var sec;
+var log;
 document.onkeypress = typeGame; // キーを押したら関数typeGame()を呼び出す
 
 // カウントダウン関数を1000ミリ毎に呼び出す関数
 /* eslint no-unused-vars: "off" */
-function cntStart() {
-  //document.timer.elements[1].disabled = true;
-  $("#start").attr("disabled",  true);
-  //  timer1 = setInterval('countDown()', 1000);
-  timer1 = setInterval(() => {
-    countDown();
-  }, 1000);
+// function cntStart() {
+//   //document.timer.elements[1].disabled = true;
+//   $("#start").attr("disabled",  true);
+//   //  timer1 = setInterval('countDown()', 1000);
+//   timer1 = setInterval(() => {
+//     countDown();
+//   }, 1000);
+// }
+function onKeyUpCountDown(e) {
+    // timer1に値がセットされていたら何もしないで終了
+    if (timer1 != null) {
+        return false;
+    }
+
+    if(e.which === 13) {
+        log = 1;
+        console.log(log);
+        timer1 = setInterval(() => {
+            countDown();
+        }, 1000);
+        return true;
+    }
+    return false;
 }
+
+$(function(){
+
+    $('html').keyup(function(e) {
+        if(onKeyUpCountDown(e)) {
+            console.log("countDown関数のタイマー設定をしました。");
+        }
+    });
+});
 
 // タイマー停止関数
 /* eslint no-unused-vars: "off" */
@@ -34,11 +61,23 @@ function cntStop() {
   clearInterval(timer1);
 }
 
-// カウントダウン関数
+// カウントダウン関数(元々はhtmlの現在の時間読み込み)
 /* eslint no-unused-vars: "off" */
 function countDown() {
   //var sec = document.timer.elements[0].value;
-  var sec = $("#leftSeconds").val();
+  console.log(40);
+  console.log(sec);
+  if(log === 1) {
+      sec = 30;
+      log = 0;
+      console.log(50);
+      console.log(log);
+  }
+  // else {
+  //     sec = $("#timerCount").val();
+  //     console.log(51);
+  // }
+
   console.log(11);
   console.log(sec);
   if (sec === '') {
@@ -57,6 +96,7 @@ function countDown() {
 function tmWrite(int) {
   var mini;
   mini = parseInt(int, 10);
+  sec = mini;
   console.log(mini);
 
   if (int <= 0) {
@@ -64,7 +104,7 @@ function tmWrite(int) {
     alert('時間です！');
   } else {
     // 残り秒数はintを60で割った余り
-    $("#leftSeconds").attr("value",  mini % 60);
+    // $("#leftSeconds").attr("value",  mini % 60);
     console.log(mini % 60);
     $("#timerCount").html(mini % 60);
 
