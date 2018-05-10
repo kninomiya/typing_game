@@ -14,8 +14,8 @@
     var a = Math.random() * 3;
     var n = Math.floor( a ) + 1;
     $("#title_img").attr("src", window.questions[n].image_path);
-    var mondai = window.questions[n].character_string;
-    $("#string").text(mondai);
+    // var mondai = window.questions[n].character_string;
+    // $("#string").text(mondai);
      }
   <% end %>
 
@@ -38,10 +38,16 @@
       <%= image_tag("title.jpg", :id => "title_img", :class => "img-thumbnail") %>
       <!--<div class="leftSeconds" id="timerCount"></div>-->
       <div class="timer" id="timerCount"></div>
+      <div class="score" id="resultScore"></div>
+      <div class="correct" id="resultCorrect"></div>
+      <div class="mistake" id="resultMistake"></div>
+      <div class="comboMax" id="resultComboMax"></div>
+      <input class="retry" id="resultRetry" type="button" value="もう１度プレイする" onclick="retry()">
       <!--<div id="leftseconds" type="text" value="20" />-->
       <p id="string">PUSH ENTER KEY</p>
     </div>
     <div id="waku"></div>
+  </div>
     <form>
       <!--<input id="leftSeconds" type="text" value="30">秒<br>-->
       <!--<input id="start" type="button" value="start" onclick="cntStart()">-->
@@ -49,7 +55,6 @@
     </form>
     <button type="submit" class="btn btn-default" button id="button1" onclick="test()">Push</button>
     <p>Find me in app/views/static_pages/home.html.erb</p>
-  </div>
 
   </head>
 </body>
