@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: "off" */
 // キーコードを格納する配列
 const keycode = [
   13, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
@@ -36,7 +37,6 @@ function retry() {
     $("#resultComboMax").html("");
     $("#resultRetry").css("display", "none");
     $("#waku").html(mondai);
-    console.log(log);
     timer1 = setInterval(() => {
         countDown();
     }, 1000);
@@ -45,6 +45,8 @@ function retry() {
     play = 1;
 }
 
+//カウンドダウン関数
+/* eslint no-unused-vars: "off" */
 function onKeyUpCountDown(e) {
     // timer1に値がセットされていたら何もしないで終了
     if (timer1 != null) {
@@ -54,7 +56,6 @@ function onKeyUpCountDown(e) {
     if(e.which === 13) {
         log = 1;
         $("#waku").html(mondai);
-        console.log(log);
         timer1 = setInterval(() => {
             countDown();
         }, 1000);
@@ -78,7 +79,6 @@ $(function(){
 // タイマー停止関数
 /* eslint no-unused-vars: "off" */
 function cntStop() {
-  //document.timer.elements[1].disabled = false;
   $("#start").attr("disabled",  false);
   clearInterval(timer1);
 }
@@ -86,30 +86,19 @@ function cntStop() {
 // カウントダウン関数(元々はhtmlの現在の時間読み込み)、秒設定
 /* eslint no-unused-vars: "off" */
 function countDown() {
-  //var sec = document.timer.elements[0].value;
-  console.log(40);
-  console.log(sec);
+//とりあえずここのsecで現在は秒数を設定
   if(log === 1) {
       sec = 15;
       play = 1;
-      console.log(50);
-      console.log(log);
       log = 0;
   }
-  // else {
-  //     sec = $("#timerCount").val();
-  //     console.log(51);
-  // }
 
-  console.log(11);
-  console.log(sec);
   if (sec === '') {
     alert('時刻を設定してください！');
     reSet();
   } else {
     if (sec === '') sec = 0;
     sec = parseInt(sec, 10);
-
     tmWrite(sec - 1);
   }
 }
@@ -120,7 +109,6 @@ function tmWrite(int) {
   var mini;
   mini = parseInt(int, 10);
   sec = mini;
-  console.log(mini);
 
 // 残り時間0かどうかの判定、0なら枠にゲームオーバーを表示、スコアを画面に表示
   if (int <= 0) {
@@ -139,37 +127,23 @@ function tmWrite(int) {
       $("#resultMistake").html("誤打数:" + mistakeCount);
       $("#resultComboMax").html("最大コンボ:" + maxcomboCount);
       $("#resultRetry").css("display", "block");
-      // $("#resultScore").html("SCORE" + correctCount);
-
 
   } else {
+    /* eslint no-unused-vars: "off" */
     // 残り秒数はintを60で割った余り
-    // $("#leftSeconds").attr("value",  mini % 60);
-    console.log(mini % 60);
     $("#timerCount").html(mini % 60);
-
-    //document.timer.elements[0].value = mini % 60;
-    //document.getElementById('timercount').innerHTML = document.timer.elements[0].value;
-    //$("#timercount").html(("#leftSeconds").attr("value",  mini % 60));
   }
 }
 
 // フォームを初期状態に戻す(リセット)関数
 /* eslint no-unused-vars: "off" */
 function reSet() {
-  //document.timer.elements[0].value = '0';
-  //var leftseconds = $("#leftseconds").attr("value",  0);
-  //console.log(leftseconds);
-  //document.timer.elements[1].disabled = false;
-  //$("#start").attr("disabled",  false);
   clearInterval(timer1);
 }
 
 // タイピングゲームの問題をセットする関数
 /* eslint no-unused-vars: "off" */
-
     function gameSet() {
-        // 文字列と文字数のカウントをクリアする
         mondai = '';
         cnt = 0;
 
@@ -178,121 +152,70 @@ function reSet() {
         var n = Math.floor(a) + 1;
         mondai = window.questions[n].character_string;
         cntmax = mondai.length;
-        console.log(100);
-        console.log(cntmax);
-        console.log(mondai);
         mojiretsu = mondai;
-        // 問題文を枠の中に入れる
         $("#title_img").attr("src", window.questions[n].image_path);
         $("#waku").html("");
-        console.log(mondai);
     }
 
 // キー入力を受け取る関数
-    console.log(101);
-    console.log(mondai);
-
+/* eslint no-unused-vars: "off" */
     function typeGame(evt) {
         var kc; // 入力されたキーコードを格納する変数
         var idName = 'waku';
-        console.log(102);
-        console.log(mondai);
-        //var elements = document.getElementsByTagName('*');
         var elements = $('*');
-        console.log(elements);
-        console.log(mondai);
         // 入力されたキーのキーコードを取得
         if (elements) {
             kc = evt.keyCode;
-            console.log(evt.keyCode);
-            console.log(103);
-            console.log(kc);
-            console.log(mondai);
         } else {
             kc = evt.which;
-            console.log(104);
         }
-        // 入力されたキーコードと問題文のキーコードを比較
-        console.log(1001);
-        console.log(cnt);
-        console.log(kc);
-        console.log(mondai.charCodeAt(0));
-        if (cnt === 0) {
-
-        }
-
+    //ゲーム開始後の処理、正しければその文字は灰色、間違えたらその文字は赤く塗る
     if (play === 1) {
-        console.log(301);
-        console.log(mojiretsu);
         var character_strings = mojiretsu;
-        var a = (mojiretsu.length - mondai.length);
-        var b = a + 1;
-        console.log(a);
-        var input_strings = mondai;
-        console.log(input_strings.length);
-        var not_inputed_strings = character_strings.substring(0,b);
-        console.log(character_strings);
-        console.log(input_strings);
-        console.log(not_inputed_strings);
+        var a = mojiretsu.length;
+        var b = (mojiretsu.length - mondai.length);
+        var c = b + 1;
+        var inputed_strings = character_strings.substring(0,b);
+        var input_strings = character_strings.substring(b,b+1);
+        var not_inputed_strings = character_strings.substring(c,a);
 
         if (kc === mondai.charCodeAt(0)) {
             console.log(105);
             // 入力されたセルの文字色を灰色にする
-            idName = mondai.slice(0, 1);
             correctCount = correctCount + 1;
-            console.log(cnt);
-            console.log(idName);
-            console.log(mondai.slice(0, 1));
-            //$("#" + idName).css("color", "#808080");
             cnt += 1; // 文字列を1つ進める
-            $("#waku").append("<span style='color: #000000'>" + character_strings + "</span>");
-            $("#waku").append("<span style='color: #808080'>" + not_inputed_strings + "</span>");
+            $("#waku").empty();
+            $("#waku").append("<span style='color: #808080'>" + inputed_strings + "</span>");
+            $("#waku").append("<span style='color: #808080'>" + input_strings + "</span>");
+            $("#waku").append("<span style='color: #000000'>" + not_inputed_strings + "</span>");
             mondai = mondai.substring(1, mondai.Length);
         } else {
             // 入力されたセルの文字色を赤にする（まだ出来てない）
             mistakeCount = mistakeCount + 1;
             comboCount = 0;
             comboFlag = 1;
-            console.log(106);
-            console.log(mondai);
-            console.log(mondai.slice(0, 1));
-            console.log(idName);
-            console.log(cnt);
-            console.log($("#idName"));
-            // $("#" + idName).css("color", "#FF0000");
-            $("#waku").text("<span style='color: #808080'>" + input_strings + "</span>");
-            $("#waku").attr("<span style='color: #FF8080'>" + input_strings + "</span>");
-            $("#waku").attr("<span style='color: #000000'>" + not_inputed_strings + "</span>");
+            $("#waku").empty();
+            $("#waku").append("<span style='color: #808080'>" + inputed_strings + "</span>");
+            $("#waku").append("<span style='color: #FF8080'>" + input_strings + "</span>");
+            $("#waku").append("<span style='color: #000000'>" + not_inputed_strings + "</span>");
         }
 
         // 全文字入力したか確認、入力していたら次の写真と文字列を呼び出す
-        console.log(cntmax);
-        if (cnt < cntmax) {
-            console.log(107);
-            console.log(mondai);
-        }
-        else {
+        if (cnt === cntmax) {
             if (comboFlag === 0) {
                 comboCount = comboCount + 1;
-                console.log(201);
                 if (comboCount >= maxcomboCount) {
-                    console.log(202);
                     maxcomboCount = comboCount;
                 }
             }
             comboFlag = 0;
-            console.log(108);
             var a = Math.random() * 3;
             var n = Math.floor(a) + 1;
             $('#title_img').attr('src', window.questions[n].image_path);
             newText = window.questions[n].character_string;
-            // $('#string').text(newText);
             $('#waku').text(newText);
-            console.log(newText);
             mojiretsu = newText;
             mondai = newText;
-            console.log(newText);
-            console.log(mondai);
             cnt = 0;
             cntmax = mondai.length;
         }
