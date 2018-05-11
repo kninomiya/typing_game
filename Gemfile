@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Ruby Version
+ruby '2.3.7'
 # Rubocop
 gem 'rubocop'
 # Bootstrap
