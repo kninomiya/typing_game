@@ -146,7 +146,7 @@ function gameSet() {
   cnt = 0;
 
   // 問題文を呼び出す
-  var a = Math.random() * 3;
+  var a = Math.random() * window.question.length;
   var n = Math.floor(a) + 1;
   mondai = window.questions[n].character_string;
   cntmax = mondai.length;
@@ -207,7 +207,7 @@ function typeGame(evt) {
         }
       }
       comboFlag = 0;
-      a = Math.random() * 3;
+      a = Math.random() * window.question.length;
       var n = Math.floor(a) + 1;
       $('#title_img').attr('src', window.questions[n].image_path);
       newText = window.questions[n].character_string;

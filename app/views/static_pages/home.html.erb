@@ -11,7 +11,7 @@
     console.log("test"+window.questions[n].character_string);
     console.log(110);
     function test(){
-    var a = Math.random() * 3;
+    var a = Math.random() * window.question.length;
     var n = Math.floor( a ) + 1;
     $("#title_img").attr("src", window.questions[n].image_path);
      }
