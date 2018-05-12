@@ -9,8 +9,8 @@ function testColor() {
   var inputStrings = 'スーパー';
   var notInputedStrings = characterStrings.substring(inputStrings.length);
 
-  $('#waku').append(`<span style='color: #0000FF'>${inputStrings}</span>`);
-  $('#waku').append(`<span id='change1' style='color: #000000'>${notInputedStrings}</span>`);
+  $('#waku').append('<span style='color: #0000FF'>${inputStrings}</span>');
+  $('#waku').append('<span id='change1' style='color: #000000'>${notInputedStrings}</span>');
 }
 
 /* eslint no-unused-vars: "off" */
