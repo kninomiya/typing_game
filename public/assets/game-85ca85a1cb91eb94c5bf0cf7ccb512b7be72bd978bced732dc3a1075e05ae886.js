@@ -18,3 +18,4 @@ function changeColor() {
   var idName = 'change1';
   document.getElementById(idName).style.color = '#FF0000';
 }
+;
