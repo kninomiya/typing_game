@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 # Ruby Version
-ruby '2.3.7'
+ruby '2.4.1'
 # Rubocop
 gem 'rubocop'
 # Bootstrap
