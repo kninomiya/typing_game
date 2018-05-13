@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <% provide(:title, 'Home') %>
 <html>
   <head>
@@ -11,8 +12,8 @@
     console.log("test"+window.questions[n].character_string);
     console.log(110);
     function test(){
-    var a = Math.random() * window.question.length;
-    var n = Math.floor( a ) + 1;
+    var a = Math.random() * window.questions.length;
+    var n = Math.floor(a);
     $("#title_img").attr("src", window.questions[n].image_path);
      }
   <% end %>

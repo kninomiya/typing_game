@@ -231,3 +231,4 @@ function typeGame(evt) {
     }
   }
 }
+;
