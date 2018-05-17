@@ -6,6 +6,12 @@ $navbar-default-bg: #FFF;
 
 $gray-medium-light: #eaeaea;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* 共通のCSS */
 
 html {
@@ -216,4 +222,27 @@ footer {
   //position: absolute;
   font-size:18pt;
   overflow:auto;
+}
+
+//デバッグ
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 90px;
+  @include box_sizing;
+}
+
+//アカウントフォーム
+
+input, textarea, select, .unedittable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
 }
