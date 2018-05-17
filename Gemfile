@@ -10,6 +10,8 @@ gem 'rb-readline'
 
 # Ruby Version
 ruby '2.4.1'
+# devise
+gem 'devise'
 # Rubocop
 gem 'rubocop'
 # Bootstrap
