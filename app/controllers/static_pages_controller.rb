@@ -6,7 +6,4 @@ class StaticPagesController < ApplicationController
   def score
   end
 
-  def authentication
-  end
-
 end
