@@ -45,6 +45,19 @@ function retry() {
   play = 1;
 }
 
+function openWelcomeGuide() {
+
+    $('#welcome-guide-modal').modal('show');
+}
+
+$(function() {
+    if(localStorage.getItem("last-access-date") == null) {
+        localStorage.setItem("last-access-date", new Date());
+        // welcomeメッセージを表示
+        openWelcomeGuide();
+    }
+});
+
 // カウンドダウン関数
 /* eslint no-unused-vars: "off" */
 function onKeyUpCountDown(e) {
