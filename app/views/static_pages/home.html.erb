@@ -2,7 +2,7 @@
 <% provide(:title, 'Home') %>
 <html>
   <head>
-    <div class="center jumbotron">
+    <div class="center color jumbotron">
       <h1>ようこそ！タイピングゲームのページへ！</h1>
     </div>
   <body onload="gameSet()">
@@ -30,6 +30,8 @@
       入力してください。
     </div>
 
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+
   <%= javascript_include_tag "typing" %>
 
   <div class="pattern1">
@@ -45,6 +47,6 @@
     </div>
     <div id="waku"></div>
   </div>
+  </body>
   </head>
-</body>
 </html>
