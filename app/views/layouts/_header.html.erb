@@ -1,21 +1,41 @@
 <header class="navbar navbar-fixed-top navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">typing game</a>
+      <a class="navbar-brand" href="../static_pages/home">typing game</a>
     </div>
-    <div class="collapse navbar-collapse" id="navbarExample8">
-      <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>
-      <form class="form-inline pull-right">
-        <div class="form-group">
-          <label for="email">ID</label>
-          <input type="email" class="form-control" id="email" placeholder="ID">
-        </div>
-        <div class="form-group">
-          <label for="pass">Password</label>
-          <input type="password" class="form-control" id="pass" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign in</button>
-      </form>
-    </div>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if signed_in? %>
+          <li id="fat-menu" class="dropdown">
+            <a herf="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li><%= link_to "Settings", '#' %></li>
+              <li class="divider"></li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: "delete" %>
+            </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+<!--    <div class="collapse navbar-collapse" id="navbarExample8">-->
+<!--      <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link">ゲスト</a> さん。</p>-->
+<!--      <form class="form-inline pull-right">-->
+<!--        <div class="form-group">-->
+<!--          <label for="email">ID</label>-->
+<!--          <input type="email" class="form-control" id="email" placeholder="ID">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--          <label for="pass">Password</label>-->
+<!--          <input type="password" class="form-control" id="pass" placeholder="Password">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-default">Sign in</button>-->
+<!--      </form>-->
+<!--    </div>-->
   </div>
 </header>

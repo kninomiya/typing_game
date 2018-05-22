@@ -1,10 +1,11 @@
 <% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
+<h1>ログイン</h1>
 
-<%= form_for(:session, url: user_session_path) do |f| %>
+<%= form_for(resource,as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
 
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="field">
         <%= f.label :email %>
         <%= f.text_field :email %>
@@ -19,7 +20,7 @@
         <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
       </div>
 
-      <p>New user? <%= link_to "Sign up now!", new_user_registration_path %></p>
+      <p>アカウント未登録ですか? <%= link_to "アカウント作成画面へ", new_user_registration_path %></p>
     </div>
   </div>
 <% end %>
