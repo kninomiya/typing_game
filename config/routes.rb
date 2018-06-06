@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   get 'users/show'
   get 'users/new'
+  get 'users/highscore'
   get 'game/index'
 
   get 'static_pages/home'

@@ -1,7 +1,46 @@
 <% provide(:title, 'score') %>
-<h1>StaticPages#score</h1>
-<p>
-  ここはハイスコア一覧を乗せるページです(使わないかもしれない)
-  今は<a href="http:/static_pages/home">戻る</a>
-  Find me in app/views/static_pages/score.html.erb
-</p>
+<html>
+  <head>
+    <body>
+      <h1>HIGH SCORE</h1>
+        <div id="highscorewaku">
+          <div class="row">
+            <div class="col-md-2" style="height:60px">Rank</div>
+            <div class="col-md-5" style="height:60px">Score</div>
+            <div class="col-md-5" style="height:60px">Name</div>
+          </div>
+          <div class="row-1">
+            <div class="col-md-2" style="height:60px">1</div>
+            <div class="col-md-5" style="height:60px">50000</div>
+            <div class="col-md-5" style="height:60px">AAAAAAAAAAAA</div>
+          </div>
+          <div class="row-2">
+            <div class="col-xs-2" style="height:60px">2</div>
+            <div class="col-xs-5" style="height:60px">40000</div>
+            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>
+          </div>
+          <div class="row-3">
+            <div class="col-xs-2" style="height:60px">3</div>
+            <div class="col-xs-5" style="height:60px">30000</div>
+            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>
+          </div>
+          <div class="row-4">
+            <div class="col-xs-2" style="height:60px">4</div>
+            <div class="col-xs-5" style="height:60px">20000</div>
+            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>
+          </div>
+          <div class="row-5">
+            <div class="col-xs-2" style="height:60px">5</div>
+            <div class="col-xs-5" style="height:60px">10000</div>
+            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>
+          </div>
+        </div>
+      <p>
+        今は<a href="http:/static_pages/home">戻る</a>
+        Find me in app/views/static_pages/score.html.erb
+      </p>
+
+
+    </body>
+  </head>
+</html>

@@ -2,9 +2,14 @@
 <% provide(:title, 'Home') %>
 <html>
   <head>
-    <div class="center color jumbotron">
-      <h1>ようこそ！タイピングゲームのページへ！</h1>
-    </div>
+    <% if signed_in? %>
+      <p>昔のゲームのタイピングゲーム</p>
+    <% else %>
+      <div class="center color jumbotron">
+        <h1>ようこそ！タイピングゲームのページへ！</h1>
+      </div>
+    <% end %>
+
   <body onload="gameSet()">
   <%= javascript_tag do %>
     var n=0;
@@ -63,7 +68,7 @@
       <div class="correct" id="resultCorrect"></div>
       <div class="mistake" id="resultMistake"></div>
       <div class="comboMax" id="resultComboMax"></div>
-      <input class="retry" id="resultRetry" type="button" value="もう１度プレイする" onclick="retry()">
+      <input class="retry" id="resultRetry" type="button" value="Retry" onclick="retry()">
       <p id="string">PUSH ENTER KEY</p>
     </div>
     <div id="waku"></div>

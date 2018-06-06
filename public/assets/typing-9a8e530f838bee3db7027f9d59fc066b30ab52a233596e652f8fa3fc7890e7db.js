@@ -102,7 +102,7 @@ function cntStop() {
 function countDown() {
 // とりあえずここのsecで現在は秒数を設定
   if (log === 1) {
-    sec = 1;
+    sec = 15;
     play = 1;
     log = 0;
   }
@@ -220,7 +220,7 @@ function typeGame(evt) {
       comboFlag = 1;
       $('#waku').empty();
       $('#waku').append("<span style='color: #808080'>" + inputed_strings + '</span>');
-      $('#waku').append("<span style='color: #FF0000'>" + input_strings + '</span>');
+      $('#waku').append("<span style='color: #FF8080'>" + input_strings + '</span>');
       $('#waku').append("<span style='color: #000000'>" + not_inputed_strings + '</span>');
     }
 
@@ -245,3 +245,4 @@ function typeGame(evt) {
     }
   }
 }
+;
