@@ -207,11 +207,10 @@ footer {
       top: 90%;
       left: 50%;
       width: auto;
-      height: 100px;
+      height: 20px;
       -ms-transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
-      padding: 0;
     }
 
   }
@@ -226,6 +225,11 @@ footer {
   text-align: center;
   vertical-align: middle;
   font-size:18pt;
+}
+
+//問題文の色替え
+div#waku>span.inputed-strings {
+  color: #808080;
 }
 
 //ハイスコアの枠（枠内に順位とスコア表示）
@@ -291,11 +295,13 @@ input {
 }
 
 .row-1 {
+  //display: table-cell;
+  vertical-align: middle;
   text-align: center;
 }
 
 .row-2 {
-  text-align: center;
+    text-align: center;
 }
 
 .row-3 {

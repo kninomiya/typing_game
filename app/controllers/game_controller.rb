@@ -1,5 +1,9 @@
 class GameController < ApplicationController
-  def index
+  def home
     @questions = Question.all
   end
+
+  def score
+  end
+
 end

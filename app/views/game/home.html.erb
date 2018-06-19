@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<% provide(:title, 'Home') %>
+<html>
+  <head>
+    <% if signed_in? %>
+      <p>昔のゲームのタイピングゲーム</p>
+    <% else %>
+      <div class="center color jumbotron">
+        <h1>ようこそ！タイピングゲームのページへ！</h1>
+      </div>
+    <% end %>
+
+  <body onload="gameSet()">
+  <%= javascript_tag do %>
+    var n=0;
+    window.questions = <%= raw @questions.to_json %>;
+    console.log("test"+window.questions[n].character_string);
+    console.log(110);
+    function test(){
+    var a = Math.random() * window.questions.length;
+    var n = Math.floor(a);
+    $("#title_img").attr("src", window.questions[n].image_path);
+     }
+  <% end %>
+
+
+<!--    <div class="comment">-->
+<!--      このページでは昔のゲームのタイトルを使ってタイピングゲームをする事が出来ます。<br>-->
+<!--      ハイスコアネームを残したい方はアカウントを作成しログインしていれば、ゲーム終了後<br>-->
+<!--      高得点を取ることによりハイスコアネームを残せますので、宜しければアカウント作成の上<br>-->
+<!--      ゲームをプレイしてみてください！<br>-->
+<!--      アカウント作成は<a herf="http://static_pages/authentication/">こちら</a>から<br><br>-->
+
+<!--      また、既にアカウントを作成されている方はヘッダーのテキストボックスからIDとPASSWORDを<br>-->
+<!--      入力してください。-->
+<!--    </div>-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="welcome-guide-modal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #EEEEEE">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <p class="modal-title" >ようこそ！タイピングゲームのページへ！</p>
+        </div>
+        <div class="modal-body">
+          <p id="guide-1" class="guide-content guide-first">アクセスいただきありがとうございます。</p>
+          <p id="guide-2" class="guide-content">このページでは昔のゲームのタイトルを使ってタイピングゲームをする事が出来ます。</p>
+          <p id="guide-3" class="guide-content">アカウントを作成すると、あなたのハイスコアをスコアボードに残すことができるようになります。</p>
+          <p id="guide-4" class="guide-content guide-last">ではプレイをお楽しみください</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-medium btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+
+  <%= javascript_include_tag "typing" %>
+
+  <div class="pattern1">
+    <div class="moji">
+      <%= image_tag("title.jpg", :id => "title_img", :class => "img-thumbnail") %>
+      <div class="timer" id="timerCount"></div>
+      <div class="score" id="resultScore"></div>
+      <div class="correct" id="resultCorrect"></div>
+      <div class="mistake" id="resultMistake"></div>
+      <div class="comboMax" id="resultComboMax"></div>
+      <input class="retry" id="resultRetry" type="button" value="Retry" onclick="retry()">
+      <p id="string">PUSH ENTER KEY</p>
+    </div>
+    <div id="waku"></div>
+  </div>
+  </body>
+  </head>
+</html>

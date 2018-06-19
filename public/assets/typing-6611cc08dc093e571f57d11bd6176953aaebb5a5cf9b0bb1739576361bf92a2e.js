@@ -15,7 +15,7 @@ var cnt = 0; // 文字のカウント
 var cntmax = 0; // 文字列の文字数をカウントする
 var mondai = ''; // 問題の文字列を格納する
 var timer1 = null;// タイマーを格納する変数
-var sec = 1; // タイマーの秒設定
+var sec; // タイマーの秒設定
 var log; // secを受け取る為のフラグ
 var play; // ゲーム開始フラグ（エンターキーを押すまでは他のキーを打っても文字が出ないようにする ）
 var newText; //
@@ -102,7 +102,7 @@ function cntStop() {
 function countDown() {
 // とりあえずここのsecで現在は秒数を設定
   if (log === 1) {
-    sec = 10;
+    sec = 1;
     play = 1;
     log = 0;
   }
@@ -210,7 +210,6 @@ function typeGame(evt) {
       cnt += 1; // 文字列を1つ進める
       $('#waku').empty();
       $('#waku').append("<span style='color: #808080'>" + inputed_strings + '</span>');
-      // $('#waku').append("<span class='inputed-strings'>" + input_strings + "</span>");
       $('#waku').append("<span style='color: #808080'>" + input_strings + '</span>');
       $('#waku').append("<span style='color: #000000'>" + not_inputed_strings + '</span>');
       mondai = mondai.substring(1, mondai.Length);
@@ -246,3 +245,4 @@ function typeGame(evt) {
     }
   }
 }
+;
