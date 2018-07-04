@@ -134,13 +134,48 @@ function tmWrite(int) {
     var messege = 'GAME OVER';
     $('#waku').html(messege);
     $('#timerCount').html('');
-    var point;
-    point = (correctCount - mistakeCount) * 50 + maxcomboCount * 500;
-    $('#resultScore').html('得点:' + point);
+    // スコアを定義、計算
+    var score = (correctCount - mistakeCount) * 50 + maxcomboCount * 500;
+    $('#resultScore').html('得点:' + score);
     $('#resultCorrect').html('正打数:' + correctCount);
     $('#resultMistake').html('誤打数:' + mistakeCount);
     $('#resultComboMax').html('最大コンボ:' + maxcomboCount);
     $('#resultRetry').css('display', 'block');
+    console.log(window.signed_in);
+    // サインインしているかの判定
+    if (window.signed_in === true) {
+      console.log(1111);
+      saveScore(score);
+      function saveScore(score) {
+        console.log(1112);
+        // TODO: 通信開始時の制御を入れる
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/game",
+          data: {
+            score: score
+          },
+          success: function(data, textStatus, jqXHR) {
+          // data.statusを見て処理を行う
+            if(data.status === "ok") {
+            } else {
+              if(data.message !== undefined) {
+                $("#error_message").text(data.message);
+              }
+            }
+            // TODO: 通信終了時の画面制御を入れる
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+            console.log(jxXHR.responseText);
+            $("#error_message").text("エラーが発生しました");
+            //TODO: 通信終了時の画面制御を入れる
+          }
+        });
+        return true;
+      }
+      console.log(501);
+    }
   } else {
     /* eslint no-unused-vars: "off" */
     // 残り秒数はintを60で割った余り
@@ -161,6 +196,7 @@ function gameSet() {
   cnt = 0;
 
   // 問題文を呼び出す
+  console.log(101);
   var a = Math.random() * window.questions.length;
   var n = Math.floor(a);
   mondai = window.questions[n].character_string;
@@ -179,14 +215,13 @@ function typeGame(evt) {
   var idName = 'waku';
   var elements = $('*');
   // 入力されたキーのキーコードを取得
-
-      if (elements) {
-          kc = evt.keyCode;
-          console.log(102);
-      } else {
-          kc = evt.which;
-          console.log(103);
-      }
+  if (elements) {
+    kc = evt.keyCode;
+    console.log(102);
+  } else {
+    kc = evt.which;
+    console.log(103);
+  }
   console.log(play);
   // ゲーム開始後の処理、正しければその文字は灰色、間違えたらその文字は赤く塗る
   if (play === 1) {
