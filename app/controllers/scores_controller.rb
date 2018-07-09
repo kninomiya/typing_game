@@ -1,5 +1,7 @@
 class ScoresController < ApplicationController
   protect_from_forgery
+  before_action :authenticate_user!
+
   def scores
     @results = Results.all
   end

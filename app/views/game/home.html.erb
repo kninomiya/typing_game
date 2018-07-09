@@ -20,7 +20,9 @@
       </div>
     <% end %>
 
+
   <body onload="gameSet()">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <%= javascript_tag do %>
     var n=0;
     window.questions = <%= raw @questions.to_json %>;

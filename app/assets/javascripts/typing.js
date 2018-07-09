@@ -157,6 +157,9 @@ function tmWrite(int) {
             user_id: user_id,
             score: score
           },
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
           success: function(data, textStatus, jqXHR) {
           // data.statusを見て処理を行う
             if(data.status === "ok") {
