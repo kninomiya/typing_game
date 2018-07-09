@@ -145,8 +145,8 @@ function tmWrite(int) {
     // サインインしているかの判定
     if (window.signed_in === true) {
       console.log(1111);
-      saveScore(1, score);
-      function saveScore(user_id, score) {
+      saveScore(score);
+      function saveScore(score) {
         console.log(1112);
         // TODO: 通信開始時の制御を入れる
         $.ajax({
@@ -154,7 +154,6 @@ function tmWrite(int) {
           dataType: "json",
           url: "/scores",
           data: {
-            user_id: user_id,
             score: score
           },
           success: function(data, textStatus, jqXHR) {
@@ -282,3 +281,4 @@ function typeGame(evt) {
     }
   }
 }
+;

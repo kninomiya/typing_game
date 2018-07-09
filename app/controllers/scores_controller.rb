@@ -1,18 +1,15 @@
-class GameController < ApplicationController
-  def home
-    @questions = Question.all
-    @results = Result.all
-    @current_user ||= User.find_by(id: session[:name])
+class ScoresController < ApplicationController
+  protect_from_forgery
+  def scores
+    @results = Results.all
   end
 
   def create
-      # @results = Result.all
 
     # リクエストパラメータを取得
     score = params[:score]
-    user_id = param[:user_id]
-    # @user = User.find_by(id: session[:user_id])
-    # user_id = @user
+    user_id = params[:user_id]
+    # user_id = current_user.name
 
     # Resultsクラス(resultテーブル用のモデル)のcreateメソッドを実行・DB上のresultテーブルにレコードを新規登録
     result = Result.create({:user_id => user_id, :score => score });
@@ -23,5 +20,4 @@ class GameController < ApplicationController
       } # ここを修正してます
     end
   end
-
 end

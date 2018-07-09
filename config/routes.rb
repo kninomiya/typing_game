@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: [:show]
   resources :score
+  resources :scores
   get 'users/show'
   get 'users/new'
   get 'users/highscore'

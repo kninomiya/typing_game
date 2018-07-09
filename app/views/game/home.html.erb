@@ -5,6 +5,7 @@
 <!--ログインしているかしていないかでメッセージを替える-->
     <% if signed_in? %>
       <p>昔のゲームのタイピングゲーム</p>
+      <div>ようこそ<%= current_user.name %>さん</div>
       <%= javascript_tag do %>
         window.signed_in = true;
         console.log(120);
