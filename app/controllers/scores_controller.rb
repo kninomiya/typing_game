@@ -2,15 +2,7 @@ class ScoresController < ApplicationController
   protect_from_forgery
   before_action :authenticate_user!
 
-  def scores
-    @results = Results.all
-  end
-
   def create
-    p "############"
-    p current_user
-    p "#############"
-
     # リクエストパラメータを取得
     score = params[:score]
     user_id = current_user.name
@@ -23,5 +15,9 @@ class ScoresController < ApplicationController
         render :json => { status: "ok", result: result.attributes }
       } # ここを修正してます
     end
+  end
+
+  def index
+    @results = Result.all
   end
 end

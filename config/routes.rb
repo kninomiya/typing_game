@@ -3,7 +3,6 @@ Rails.application.routes.draw do
       :registrations => "registrations"
   }
   resources :users, only: [:show]
-  resources :score
   resources :scores
   get 'users/show'
   get 'users/new'
