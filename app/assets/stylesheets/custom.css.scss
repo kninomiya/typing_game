@@ -1,5 +1,5 @@
 $navbar-default-bg: #FFF;
-@import "bootstrap-sprockets";
+//@import "bootstrap-sprockets";
 @import "bootstrap";
 
 /* mixins,variables.etc. */
@@ -70,7 +70,7 @@ logo {
   float: lest;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #a6e1ec;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 12px;
@@ -87,12 +87,12 @@ logo {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #gray-medium-light;
-  color: $gray-light;
+  border-top: 1px solid #bce2e8;
+  color: #000000;
   a {
-    color: $gray;
+    //color: $gray;
     & hover {
-      color: #gray-darker;
+      color: #bce2e8;
     }
   }
   small {
@@ -285,7 +285,7 @@ input {
 
 .field_with_errors {
   @extend .form-group;
-  @extend .has-error;
+  //@extend .has-error;
   margin-bottom: 0;
 }
 

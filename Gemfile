@@ -15,7 +15,7 @@ gem 'devise'
 # Rubocop
 gem 'rubocop'
 # Bootstrap
-gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.1.1'
 # Sprockets
 gem 'sprockets'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

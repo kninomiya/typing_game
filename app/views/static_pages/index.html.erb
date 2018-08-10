@@ -1,0 +1,15 @@
+# 配列animalsを宣言・初期化
+#!/usr/local/bin/ruby
+
+require 'open-uri'
+
+# 配列animalsを宣言・初期化
+animals = []
+open("https://gist.githubusercontent.com/uneco/5856580/raw/bc117e88b6d4e45fc1e65cac277c1184a65486cd/animal.txt") do |file|
+fileContents = file.read()
+animals = fileContents.split("\n")
+
+for animal in animals do
+print animal, "\n"
+end
+end

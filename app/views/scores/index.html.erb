@@ -1,65 +1,68 @@
 <% provide(:title, 'score') %>
 <html>
   <head>
-    <body>
-      <h1>HIGH SCORE</h1>
-        <div>
-<!--        <div id="highscorewaku">-->
-<!--          <div class="row">-->
-<!--            <div class="col-md-2" style="height:60px">Rank</div>-->
-<!--            <div class="col-md-5" style="height:60px">Score</div>-->
-<!--            <div class="col-md-5" style="height:60px">Name</div>-->
-<!--          </div>-->
-          <table id="items" class="table table-striped table-light">
-            <tr>
-              <th scope="col">Rank</th>
-              <th scope="col">Name</th>
-              <th scope="col">Score</th>
-            </tr>
-          <tbody>
-            <% @results.each_with_index do |results, i| %>
-              <tr id="item-<%= results[:user_id] %>">
-                <td scope="row"><%= i + 1 %></td>
-                <td><%= results[:score] %>(ID: <%= results[:user_id] %>)</td>
-                <td><%= results[:score].to_s(:delimited) %></td>
-              </tr>
-            <% end %>
-          </tbody>
-          </table>
+    <script>
+      function onClickBack() {
 
-
-
-<!--          <div class="row-1">-->
-<!--            <div class="col-md-2" style="height:60px">1</div>-->
-<!--            <div class="col-md-5" style="height:60px">50000</div>-->
-<!--            <div class="col-md-5" style="height:60px">AAAAAAAAAAAA</div>-->
-<!--          </div>-->
-<!--          <div class="row-2">-->
-<!--            <div class="col-xs-2" style="height:60px">2</div>-->
-<!--            <div class="col-xs-5" style="height:60px">40000</div>-->
-<!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
-<!--          </div>-->
-<!--          <div class="row-3">-->
-<!--            <div class="col-xs-2" style="height:60px">3</div>-->
-<!--            <div class="col-xs-5" style="height:60px">30000</div>-->
-<!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
-<!--          </div>-->
-<!--          <div class="row-4">-->
-<!--            <div class="col-xs-2" style="height:60px">4</div>-->
-<!--            <div class="col-xs-5" style="height:60px">20000</div>-->
-<!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
-<!--          </div>-->
-<!--          <div class="row-5">-->
-<!--            <div class="col-xs-2" style="height:60px">5</div>-->
-<!--            <div class="col-xs-5" style="height:60px">10000</div>-->
-<!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
-<!--          </div>-->
-          <input class="retry" id="resultRetry" type="button" value="Retry" onclick="retry()">
-        </div>
-      <p>
-        今は<a href="http:/static_pages/home">戻る</a>
-        Find me in app/views/static_pages/score.html.erb
-      </p>
-    </body>
+          document.backForm.submit();
+      }
+    </script>
   </head>
+  <body>
+  <h1>HIGH SCORE</h1>
+  <div>
+    <!--        <div id="highscorewaku">-->
+    <!--          <div class="row">-->
+    <!--            <div class="col-md-2" style="height:60px">Rank</div>-->
+    <!--            <div class="col-md-5" style="height:60px">Score</div>-->
+    <!--            <div class="col-md-5" style="height:60px">Name</div>-->
+    <!--          </div>-->
+    <table id="items" class="table table-striped table-light">
+      <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+      <tbody>
+      <% @results.each_with_index do |results, i| %>
+        <td scope="row"><%= i + 1 %></td>
+        <td><%= results[:user_id] %></td>
+        <td><%= results[:score].to_s(:delimited) %></td>
+        <% break if i === 4 %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <!--          <div class="row-1">-->
+    <!--            <div class="col-md-2" style="height:60px">1</div>-->
+    <!--            <div class="col-md-5" style="height:60px">50000</div>-->
+    <!--            <div class="col-md-5" style="height:60px">AAAAAAAAAAAA</div>-->
+    <!--          </div>-->
+    <!--          <div class="row-2">-->
+    <!--            <div class="col-xs-2" style="height:60px">2</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">40000</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
+    <!--          </div>-->
+    <!--          <div class="row-3">-->
+    <!--            <div class="col-xs-2" style="height:60px">3</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">30000</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
+    <!--          </div>-->
+    <!--          <div class="row-4">-->
+    <!--            <div class="col-xs-2" style="height:60px">4</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">20000</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
+    <!--          </div>-->
+    <!--          <div class="row-5">-->
+    <!--            <div class="col-xs-2" style="height:60px">5</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">10000</div>-->
+    <!--            <div class="col-xs-5" style="height:60px">AAAAAAAAAAAA</div>-->
+    <!--          </div>-->
+    <!--          <input class="retry" id="resultRetry" type="button" value="Retry" onclick="retry()">-->
+    <!--        <input class="retry" id="resultRetry" type="button" value="Retry" onclick="retry()">-->
+  </div>
+  <h3><a href="#" onclick="onClickBack()">タイトルへ</a></h3>
+  <form name="backForm" action="/game/home" method="get">
+  </form>
+  </body>
 </html>
